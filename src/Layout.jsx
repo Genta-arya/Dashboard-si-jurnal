@@ -61,7 +61,7 @@ const Layout = () => {
         </div>
       </div>
 
-      <div className="md:hidden lg:hidden w-full">
+      <div className="md:hidden lg:hidden block w-full">
         <Navbar />
 
         <Container>
