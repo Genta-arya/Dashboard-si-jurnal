@@ -1,5 +1,5 @@
 import React from "react";
-import logoKiri from "@/assets/Icons.png"; 
+import logoKiri from "@/assets/icons.png"; 
 import logoKanan from "@/assets/icon_kalbar.png"; 
 
 const Kop = () => {
