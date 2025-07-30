@@ -1,6 +1,6 @@
 import React from "react";
-import logoKiri from "@/assets/Icons.png"; // ganti path sesuai struktur project-mu
-import logoKanan from "@/assets/icon_kalbar.png"; // ganti path sesuai struktur project-mu
+import logoKiri from "@/assets/Icons.png"; 
+import logoKanan from "@/assets/icon_kalbar.png"; 
 
 const Kop = () => {
   return (
