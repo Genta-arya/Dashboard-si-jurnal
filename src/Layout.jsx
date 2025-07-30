@@ -64,10 +64,10 @@ const Layout = () => {
       <div className="md:hidden lg:hidden block w-full">
         <Navbar />
 
-          <Dashboard />
-        {/* <Container>
+          {/* <Dashboard /> */}
+        <Container>
           <Outlet />
-        </Container> */}
+        </Container>
         <BottomNavigation />
       </div>
     </SidebarProvider>
