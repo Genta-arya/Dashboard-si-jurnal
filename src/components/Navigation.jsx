@@ -15,7 +15,7 @@ const Navigation = ({ text }) => {
   };
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex lg:flex-row md:flex-row flex-col justify-between md:items-center gap-2 lg:items-center">
       <div
         className="flex items-center px-4 gap-2 cursor-pointer text-sm font-semibold hover:opacity-80"
         onClick={handleBack}

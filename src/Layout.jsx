@@ -8,6 +8,9 @@ import { Toaster } from "sonner";
 import useSession from "./hooks/use-session";
 import Loading from "./components/Loading";
 import { CircleFadingArrowUp } from "lucide-react";
+import Headers from "./components/Headers";
+import Dashboard from "./Views/Dashboard/Dashboard";
+import BottomNavigation from "./components/BottomNavigation";
 
 const Layout = () => {
   const { loading, user } = useSession();
@@ -57,7 +60,16 @@ const Layout = () => {
           )}
         </div>
       </div>
-      
+
+      <div className="md:hidden lg:hidden w-full">
+        <Navbar />
+
+        <Container>
+          {/* <Dashboard /> */}
+          <Outlet />
+        </Container>
+        <BottomNavigation />
+      </div>
     </SidebarProvider>
   );
 };

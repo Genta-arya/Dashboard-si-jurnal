@@ -237,7 +237,7 @@ const LaporanGuru = () => {
 
                 {showModal && (
                   <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-                    <div className="bg-white p-6 rounded w-[70%]  space-y-3 shadow-lg">
+                    <div className="bg-white p-6 rounded lg:w-[70%] md:w-[70%] w-[90%]  space-y-3 shadow-lg">
                       <h2 className="font-bold text-center text-lg">
                         Informasi Cetak
                       </h2>
@@ -314,8 +314,8 @@ const LaporanGuru = () => {
                           })
                         }
                       />
-                      <div className="flex justify-between mt-4">
-                        <div className="flex gap-2">
+                      <div className="flex justify-between lg:flex-row md:flex-row flex-col gap-2 mt-4">
+                        <div className="flex g:flex-row md:flex-row flex-col gap-2">
                           <button
                             className="bg-gray-400 text-white px-4 py-2 rounded"
                             onClick={() => setShowModal(false)}
@@ -350,7 +350,7 @@ const LaporanGuru = () => {
                   </div>
                 )}
 
-                <div ref={printRef} className="p-4 text-xs">
+                <div ref={printRef} className="p-4 print:block hidden md:block lg:block overflow-auto text-xs">
                   <Kop />
                   <h2 className="text-xl font-bold text-center mb-4 uppercase mt-4">
                     Rekapitulasi Jurnal Mengajar Guru <br /> SMK Negeri 2

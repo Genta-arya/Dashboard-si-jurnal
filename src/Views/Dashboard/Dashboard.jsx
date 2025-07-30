@@ -242,7 +242,7 @@ const Dashboard = () => {
             type="date"
             value={selectedDate}
             onChange={handleDateChange}
-            className="border px-3 outline-none py-1 rounded-md text-sm"
+            className="border px-3 w-full lg:w-fit md:w-fit outline-none py-1 rounded-md text-sm"
           />
         </div>
 
