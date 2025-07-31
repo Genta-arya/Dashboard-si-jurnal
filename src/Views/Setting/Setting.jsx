@@ -15,7 +15,7 @@ const Setting = () => {
             Preview Formulir
         </p>
         <iframe
-          src="https://formt-jurnal-mengajar.vercel.app/"
+          src="https://sijurnal.smkn2ketapang.sch.id"
           title="Preview Form Setting"
           width="100%"
           height="600px"
