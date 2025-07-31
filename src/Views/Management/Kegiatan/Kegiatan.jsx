@@ -70,7 +70,7 @@ const Kegiatan = () => {
           item.nama_kegiatan.toLowerCase().includes(search.toLowerCase())
         )
       );
-      toast.success("Kegiatan berhasil diperbarui (local)");
+      toast.success("Kegiatan berhasil diperbarui");
       setEditId(null);
     } catch (error) {
       toast.error(error.message || "Gagal memperbarui data kegiatan");
@@ -90,7 +90,7 @@ const Kegiatan = () => {
           item.nama_kegiatan.toLowerCase().includes(search.toLowerCase())
         )
       );
-      toast.success("Data Kegiatan dihapus (local)");
+      toast.success("Data Kegiatan dihapus");
     } catch (error) {
       toast.error(error.message || "Gagal menghapus data kegiatan");
     } finally {
@@ -124,7 +124,7 @@ const Kegiatan = () => {
         )
       );
       setNewNamaKegiatan("");
-      toast.success("Kegiatan berhasil ditambahkan (local)");
+      toast.success("Kegiatan berhasil ditambahkan");
     } catch (error) {
       console.log(error);
       toast.error(error.message || "Gagal menambah data kegiatan");

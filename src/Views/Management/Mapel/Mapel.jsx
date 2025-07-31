@@ -70,7 +70,7 @@ const Mapel = () => {
           item.nama_mapel.toLowerCase().includes(search.toLowerCase())
         )
       );
-      toast.success("Mapel berhasil diperbarui (local)");
+      toast.success("Mapel berhasil diperbarui");
       setEditId(null);
     } catch (error) {
       toast.error(error.message || "Gagal memperbarui data mapel");
@@ -90,7 +90,7 @@ const Mapel = () => {
           item.nama_mapel.toLowerCase().includes(search.toLowerCase())
         )
       );
-      toast.success("Data Mapel dihapus (local)");
+      toast.success("Data Mapel dihapus");
     } catch (error) {
       toast.error(error.message || "Gagal menghapus data mapel");
     } finally {
@@ -124,7 +124,7 @@ const Mapel = () => {
         )
       );
       setNewNamaMapel("");
-      toast.success("Mapel berhasil ditambahkan (local)");
+      toast.success("Mapel berhasil ditambahkan");
     } catch (error) {
       console.log(error);
       toast.error(error.message || "Gagal menambah data mapel");

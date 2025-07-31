@@ -68,7 +68,7 @@ const Pegawai = () => {
           item.name.toLowerCase().includes(search.toLowerCase())
         )
       );
-      toast.success("Pegawai berhasil diperbarui (local)");
+      toast.success("Pegawai berhasil diperbarui");
       setEditId(null);
     } catch (error) {
       toast.error(error.message || "Gagal memperbarui data pegawai");
@@ -88,7 +88,7 @@ const Pegawai = () => {
           item.name.toLowerCase().includes(search.toLowerCase())
         )
       );
-      toast.success("Data pegawai dihapus (local)");
+      toast.success("Data pegawai dihapus");
     } catch (error) {
       toast.error(error.message || "Gagal menghapus data pegawai");
     } finally {
@@ -122,7 +122,7 @@ const Pegawai = () => {
         )
       );
       setNewName("");
-      toast.success("Pegawai berhasil ditambahkan (local)");
+      toast.success("Pegawai berhasil ditambahkan");
     } catch (error) {
       console.log(error);
       toast.error(error.message || "Gagal menambah data pegawai");

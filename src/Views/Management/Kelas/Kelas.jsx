@@ -69,7 +69,7 @@ const Kelas = () => {
           item.nama_kelas.toLowerCase().includes(search.toLowerCase())
         )
       );
-      toast.success("kelas berhasil diperbarui (local)");
+      toast.success("kelas berhasil diperbarui");
       setEditId(null);
     } catch (error) {
       toast.error(error.message || "Gagal memperbarui data kelas");
@@ -89,7 +89,7 @@ const Kelas = () => {
           item.nama_kelas.toLowerCase().includes(search.toLowerCase())
         )
       );
-      toast.success("Data Kelas dihapus (local)");
+      toast.success("Data Kelas dihapus");
     } catch (error) {
       toast.error(error.message || "Gagal menghapus data kelas");
     } finally {
@@ -123,7 +123,7 @@ const Kelas = () => {
         )
       );
       setNewNamaKelas("");
-      toast.success("kelas berhasil ditambahkan (local)");
+      toast.success("kelas berhasil ditambahkan");
     } catch (error) {
       console.log(error);
       toast.error(error.message || "Gagal menambah data kelas");
