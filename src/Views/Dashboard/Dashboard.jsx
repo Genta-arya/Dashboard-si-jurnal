@@ -77,7 +77,8 @@ const Dashboard = () => {
     try {
       const dateISO = DateTime.fromISO(selectedDate)
         .setZone("Asia/Jakarta")
-        .toISO(); // kirim format ISO lengkap dengan jam
+        .toISODate(); // ⬅️ hanya kirim "YYYY-MM-DD"
+
       const response = await GetJurnalHarian({ date: dateISO });
       setJurnalData(response.data || []);
     } catch (error) {
