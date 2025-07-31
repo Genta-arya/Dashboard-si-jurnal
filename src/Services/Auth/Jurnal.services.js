@@ -10,6 +10,17 @@ export const GetJurnalHarian = async (data) => {
     throw error;
   }
 };
+export const GetJurnalTahunan = async (data) => {
+  try {
+    const response = await axiosInstance.post("/journal/tahunan/data", {
+      ...data,
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 export const GetJurnalById = async (id , year) => {
   try {

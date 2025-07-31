@@ -350,7 +350,7 @@ const LaporanGuru = () => {
                   </div>
                 )}
 
-                <div ref={printRef} className="p-4 print:block hidden md:block lg:block overflow-auto text-xs">
+                <div ref={printRef} className=" overflow-auto text-xs">
                   <Kop />
                   <h2 className="text-xl font-bold text-center mb-4 uppercase mt-4">
                     Rekapitulasi Jurnal Mengajar Guru <br /> SMK Negeri 2
@@ -460,9 +460,26 @@ const LaporanGuru = () => {
                             <td className="border border-black p-1">
                               {jurnal.materi}
                             </td>
-                            <td className="border border-black w-52 p-1">
-                              {JSON.parse(jurnal.kegiatan).join(", ")}
+                            <td className="border w-52 border-black p-1">
+                              {(() => {
+                                try {
+                                  const parsed = JSON.parse(jurnal.kegiatan);
+                                  return Array.isArray(parsed) ? (
+                                    <ol className="list-decimal text-start pl-4">
+                                      {parsed.map((item, index) => (
+                                        <li key={index}>{item}</li>
+                                      ))}
+                                    </ol>
+                                  ) : (
+                                    jurnal.materi
+                                  );
+                                } catch {
+                                  return jurnal.materi;
+                                }
+                              })()}
                             </td>
+
+                          
                             <td className="border border-black p-1">
                               {jurnal.siswaHadir}
                             </td>

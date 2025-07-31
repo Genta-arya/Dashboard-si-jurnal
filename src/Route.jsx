@@ -19,6 +19,7 @@ import Banner from "./Views/Setting/Banner/Banner";
 import Laporan from "./Views/Laporan/Laporan";
 import LaporanGuru from "./Views/Laporan/Guru/LaporanGuru";
 import LaporanKelas from "./Views/Laporan/Kelas/LaporanKelas";
+import LaporanSemua from "./Views/Laporan/Keseluruhan/LaporanSemua";
 
 const RouteApp = () => {
   return (
@@ -40,6 +41,7 @@ const RouteApp = () => {
           <Route path="/laporan" element={<Laporan />} />
           <Route path="/laporan/guru" element={<LaporanGuru />} />
           <Route path="/laporan/kelas" element={<LaporanKelas />} />
+          <Route path="/laporan/keseluruhan" element={<LaporanSemua />} />
         </Route>
         <Route path="*" element={<HalamanNotFound />} />
       </Routes>

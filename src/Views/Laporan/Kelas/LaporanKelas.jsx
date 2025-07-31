@@ -159,7 +159,7 @@ const LaporanKelas = () => {
       {dataRekap.length > 0 && selectedKelas && (
         <div
           ref={printRef}
-          className="bg-white overflow-auto print:block hidden md:block lg:block text-black p-4"
+          className="bg-white overflow-auto  text-black "
         >
           <Kop />
           <h2 className="text-center font-bold uppercase text-base mb-1">
