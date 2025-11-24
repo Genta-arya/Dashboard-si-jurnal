@@ -20,6 +20,8 @@ const LaporanSemua = () => {
     nipWaka: "",
     nipKepsek: "",
   });
+  const [startMonth, setStartMonth] = useState("01");
+  const [endMonth, setEndMonth] = useState("12");
 
   const [showModal, setShowModal] = useState(false);
   const printNow = useReactToPrint({
@@ -104,6 +106,44 @@ const LaporanSemua = () => {
         </div>
       </div>
 
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className="font-medium">Dari Bulan:</label>
+          <select
+            value={startMonth}
+            onChange={(e) => setStartMonth(e.target.value)}
+            className="border p-2 w-full"
+          >
+            {Array.from({ length: 12 }, (_, i) => {
+              const val = String(i + 1).padStart(2, "0");
+              return (
+                <option key={val} value={val}>
+                  {DateTime.fromObject({ month: i + 1 }).toFormat("LLLL")}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
+        <div>
+          <label className="font-medium">Sampai Bulan:</label>
+          <select
+            value={endMonth}
+            onChange={(e) => setEndMonth(e.target.value)}
+            className="border p-2 w-full"
+          >
+            {Array.from({ length: 12 }, (_, i) => {
+              const val = String(i + 1).padStart(2, "0");
+              return (
+                <option key={val} value={val}>
+                  {DateTime.fromObject({ month: i + 1 }).toFormat("LLLL")}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </div>
+
       <div className="mt-4 flex justify-end gap-2">
         <button
           className="px-4 py-2 bg-blue-600 w-full mb-10 text-white rounded hover:bg-blue-700"
@@ -176,86 +216,91 @@ const LaporanSemua = () => {
             </thead>
 
             <tbody>
-              {data.map((item, index) => (
-                <tr key={item.id} className="break-inside-avoid">
-                  <td className="border border-black px-2 py-1 text-center">
-                    {index + 1}
-                  </td>
-                  <td className="border w-20 text-center border-black px-2 py-1">
-                    {DateTime.fromISO(item.tanggalMengajar).toFormat(
-                      "dd-MM-yyyy"
-                    )}
-                  </td>
-                  <td className="border border-black px-2 py-1">
-                    {item.namaGuru}
-                  </td>
-                  <td className="border w-20 border-black px-2 py-1">
-                    {item.mataPelajaran}
-                  </td>
-                  <td className="border border-black px-2 py-1">
-                    {item.kelas}
-                  </td>
-                  <td className="border border-black px-2 py-1">
-                    {(() => {
-                      try {
-                        const parsed = JSON.parse(item.jamKe);
-                        return Array.isArray(parsed)
-                          ? parsed.join(", ")
-                          : item.jamKe;
-                      } catch {
-                        return item.jamKe;
-                      }
-                    })()}
-                  </td>
+              {data
+                .filter((item) => {
+                  const m = DateTime.fromISO(item.tanggalMengajar).month; // 1-12
+                  return m >= Number(startMonth) && m <= Number(endMonth);
+                })
+                .map((item, index) => (
+                  <tr key={item.id} className="break-inside-avoid">
+                    <td className="border border-black px-2 py-1 text-center">
+                      {index + 1}
+                    </td>
+                    <td className="border w-20 text-center border-black px-2 py-1">
+                      {DateTime.fromISO(item.tanggalMengajar).toFormat(
+                        "dd-MM-yyyy"
+                      )}
+                    </td>
+                    <td className="border border-black px-2 py-1">
+                      {item.namaGuru}
+                    </td>
+                    <td className="border w-20 border-black px-2 py-1">
+                      {item.mataPelajaran}
+                    </td>
+                    <td className="border border-black px-2 py-1">
+                      {item.kelas}
+                    </td>
+                    <td className="border border-black px-2 py-1">
+                      {(() => {
+                        try {
+                          const parsed = JSON.parse(item.jamKe);
+                          return Array.isArray(parsed)
+                            ? parsed.join(", ")
+                            : item.jamKe;
+                        } catch {
+                          return item.jamKe;
+                        }
+                      })()}
+                    </td>
 
-                  <td className="border border-black px-2 py-1 text-center">
-                    {item.statusKehadiran}
-                  </td>
-                  <td className="border border-black px-2 py-1">
-                    {(() => {
-                      try {
-                        const parsed = JSON.parse(item.materi);
-                        return Array.isArray(parsed) ? (
-                          <ol className="list-decimal pl-4">
-                            {parsed.map((m, i) => (
-                              <li key={i}>{m}</li>
-                            ))}
-                          </ol>
-                        ) : (
-                          item.materi
-                        );
-                      } catch {
-                        return item.materi;
-                      }
-                    })()}
-                  </td>
-                  <td className="border border-black px-2 py-1">
-                    {(() => {
-                      try {
-                        const parsed = JSON.parse(item.kegiatan);
-                        return Array.isArray(parsed) ? (
-                          <ol className="list-decimal pl-4">
-                            {parsed.map((k, i) => (
-                              <li key={i}>{k}</li>
-                            ))}
-                          </ol>
-                        ) : (
-                          item.kegiatan
-                        );
-                      } catch {
-                        return item.kegiatan;
-                      }
-                    })()}
-                  </td>
-                  <td className="border border-black px-2 py-1 text-center">
-                    {item.siswaHadir}
-                  </td>
-                  <td className="border border-black px-2 py-1 text-center">
-                    {item.siswaTidakHadir}
-                  </td>
-                  <td className="border w-32 text-center border-black px-2 py-1"></td>
-                </tr>
-              ))}
+                    <td className="border border-black px-2 py-1 text-center">
+                      {item.statusKehadiran}
+                    </td>
+                    <td className="border border-black px-2 py-1">
+                      {(() => {
+                        try {
+                          const parsed = JSON.parse(item.materi);
+                          return Array.isArray(parsed) ? (
+                            <ol className="list-decimal pl-4">
+                              {parsed.map((m, i) => (
+                                <li key={i}>{m}</li>
+                              ))}
+                            </ol>
+                          ) : (
+                            item.materi
+                          );
+                        } catch {
+                          return item.materi;
+                        }
+                      })()}
+                    </td>
+                    <td className="border border-black px-2 py-1">
+                      {(() => {
+                        try {
+                          const parsed = JSON.parse(item.kegiatan);
+                          return Array.isArray(parsed) ? (
+                            <ol className="list-decimal pl-4">
+                              {parsed.map((k, i) => (
+                                <li key={i}>{k}</li>
+                              ))}
+                            </ol>
+                          ) : (
+                            item.kegiatan
+                          );
+                        } catch {
+                          return item.kegiatan;
+                        }
+                      })()}
+                    </td>
+                    <td className="border border-black px-2 py-1 text-center">
+                      {item.siswaHadir}
+                    </td>
+                    <td className="border border-black px-2 py-1 text-center">
+                      {item.siswaTidakHadir}
+                    </td>
+                    <td className="border w-32 text-center border-black px-2 py-1"></td>
+                  </tr>
+                ))}
             </tbody>
           </table>
           <div className="mt-20 text-sm">
