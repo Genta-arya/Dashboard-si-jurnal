@@ -35,7 +35,7 @@ export const ServiceLogout = async (token) => {
   }
 };
 
-export const UPLOAD_URL = "https://cloud.mystorages.my.id/uploads.php";
+export const UPLOAD_URL = "https://cloud.apiservices.my.id/uploads.php";
 
 export const uploadGambar = async (data) => {
   try {
